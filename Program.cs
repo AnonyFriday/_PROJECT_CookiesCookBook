@@ -5,9 +5,9 @@
         static void Main(string[] args)
         {
             CookieCookbook cookieCookbookApp = new CookieCookbook(
-                new RecipesConsoleUserInteraction(),
-                new RecipesRepository());
-            cookieCookbookApp.Run();
+                new RecipesRepository(),
+                new RecipesConsoleUserInteraction());
+            cookieCookbookApp.Run("recipes.txt");
         }
     }
 }

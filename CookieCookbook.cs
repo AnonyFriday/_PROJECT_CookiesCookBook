@@ -17,7 +17,7 @@ namespace _03_CookiesCookbook_Practise
             _recipesUserInteraction = recipesUserInteraction;
         }
 
-        public void Run()
+        public void Run(string filePath)
         {
             var allRecipes = _recipesRepository.Read(filePath);
             _recipeUserInteraction.PrintExistingRecipes(allRecipes);
