@@ -1,6 +1,6 @@
 ﻿namespace _03_CookiesCookbook_Practise
 {
-    internal class RecipeRepository
+    public interface IRecipesRepository
     {
     }
 }

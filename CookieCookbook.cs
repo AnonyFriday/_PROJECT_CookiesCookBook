@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace _03_CookiesCookbook_Practise
 {
-    internal class CookieCookbook
+    public class CookieCookbook
     {
-        private readonly RecipeRepository _recipeRepository;
-        private readonly RecipeUserInteraction _recipeUserInteraction;
+        private readonly IRecipesRepository _recipesRepository;
+        private readonly IRecipesUserInteraction _recipesUserInteraction;
 
-        public CookieCookbook(RecipeRepository recipeRepository, RecipeUserInteraction recipeUserInteraction)
+        public CookieCookbook(IRecipesRepository recipesRepository, IRecipesUserInteraction recipesUserInteraction)
         {
-            _recipeRepository = recipeRepository;
-            _recipeUserInteraction = recipeUserInteraction;
+            _recipesRepository = recipesRepository;
+            _recipesUserInteraction = recipesUserInteraction;
         }
 
         public void Run()
         {
-            var allRecipes = _recipeRepository.Read(filePath);
+            var allRecipes = _recipesRepository.Read(filePath);
             _recipeUserInteraction.PrintExistingRecipes(allRecipes);
             _recipeUserInteraction.PromptToCreateRecipe();
 
@@ -29,7 +29,7 @@ namespace _03_CookiesCookbook_Practise
             {
                 var recipe = new Recipe(ingredients);
                 allRecipes.Add(recipe);
-                _recipeRepository.Write(filePath, allRecipes);
+                _recipesRepository.Write(filePath, allRecipes);
                 _recipeUserInteraction.ShowMessage("Recipe added: ");
                 _recipeUserInteraction.ShowMessage(recipe.ToString());
             }
@@ -40,6 +40,7 @@ namespace _03_CookiesCookbook_Practise
                     "No ingredients have been selected." +
                     "Recipe will not be saved.");
             }
+            _recipeUserInteraction.Exit();
 
         }
     }

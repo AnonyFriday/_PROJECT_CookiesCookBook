@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            CookieCookbook cookieCookbookApp = new CookieCookbook();
+            CookieCookbook cookieCookbookApp = new CookieCookbook(
+                new RecipesConsoleUserInteraction(),
+                new RecipesRepository());
             cookieCookbookApp.Run();
         }
     }
