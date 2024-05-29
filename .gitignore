@@ -1,0 +1,38 @@
+# See Ignoring files - GitHub Docs for more about ignoring files.
+
+# Visual Studio Code
+.vscode
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio 2015
+.vs/
+
+# dependencies
+Web Application/node_modules
+Web Application/package-lock.json
+/.pnp
+.pnp.js
+
+# testing
+/cove
