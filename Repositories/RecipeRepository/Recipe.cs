@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CookieCookbook.Recipes.Ingredients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _03_CookiesCookbook_Practise.Recipes.Ingredients;
 
-namespace _03_CookiesCookbook_Practise.Recipes
+namespace _03_CookiesCookbook_Practise.Repositories.RecipeRepository
 {
     public class Recipe
     {
@@ -18,11 +18,22 @@ namespace _03_CookiesCookbook_Practise.Recipes
          * => dont expose Clear() method outside
          * => but casting into (List<Ingredient>) recipe.Ingredients).Clear() is still valid => using the Readonly Collections
          *
-         * </Ingredient>
          */
         public IEnumerable<Ingredient> Ingredients { get; }
-        public Recipe(IEnumerable<Ingredient> ingredients) {
+        public Recipe(IEnumerable<Ingredient> ingredients)
+        {
             Ingredients = ingredients;
+        }
+
+        public override string? ToString()
+        {
+            var steps  = new List <string>();
+            foreach(var ingredient in Ingredients)
+            {
+                steps.Add($"{ingredient.Name}, {ingredient.PreparationInstructions}");
+            }
+
+            return string.Join("\n", steps);
         }
     }
 }
