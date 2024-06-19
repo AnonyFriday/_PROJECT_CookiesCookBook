@@ -9,7 +9,6 @@ namespace _03_CookiesCookbook_Practise.Repositories.RecipeRepository
 {
     public class Recipe
     {
-
         /**
          * If I use the List right here, someone can access to the Ingredients reference and
          * call method Clear() => Dangerous

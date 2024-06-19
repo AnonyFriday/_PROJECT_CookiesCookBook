@@ -1,6 +1,5 @@
 ﻿using _03_CookiesCookbook_Practise.Repositories.RecipeRepository;
 using CookieCookbook.Recipes.Ingredients;
-using System.Text.Json;
 
 namespace _03_CookiesCookbook_Practise
 {
@@ -79,9 +78,9 @@ namespace _03_CookiesCookbook_Practise
 
     public class RecipeConsoleUserInteraction : IRecipesUserInteraction
     {
-        private readonly IngredientsRegister _ingredientsRegister;
+        private readonly IIngredientsRegister _ingredientsRegister;
 
-        public RecipeConsoleUserInteraction(IngredientsRegister ingredientsRegister)
+        public RecipeConsoleUserInteraction(IIngredientsRegister ingredientsRegister)
         {
             _ingredientsRegister = ingredientsRegister;
         }
@@ -210,57 +209,6 @@ namespace _03_CookiesCookbook_Practise
                 recipesAsStrings.Add(String.Join(Seperator, allIds));
             }
             _stringsRepository.Write(filePath, recipesAsStrings);
-        }
-    }
-
-    class StringsTexualRepository : IStringsRepository
-    {
-        private static readonly string Separator = Environment.NewLine;
-
-        /**
-         * Read the content from the filepath
-         */
-        public List<string> Read(string filePath)
-        {
-            if (File.Exists(filePath))
-            {
-                string fileContents = File.ReadAllText(filePath);
-                return fileContents.Split(Separator).ToList();
-            }
-                return new List<string>();
-        }
-
-        /**
-         * Write a list of strings into a file
-         */
-        public void Write(string filePath, List<string> strings)
-        {
-            File.WriteAllText(filePath, string.Join(Separator, strings));
-        }
-    }
-
-    class StringsJsonRepository : IStringsRepository
-    {
-
-        /**
-         * Read the content from the filepath
-         */
-        public List<string> Read(string filePath)
-        {
-            if (File.Exists(filePath))
-            {
-                string fileContents = File.ReadAllText(filePath);
-                return JsonSerializer.Deserialize<List<string>>(fileContents);
-            }
-            return new List<string>();
-        }
-
-        /**
-         * Write a string content, which being serialized into json to the file
-         */
-        public void Write(string filePath, List<string> strings)
-        {
-            File.WriteAllText(filePath, JsonSerializer.Serialize<List<string>>(strings));
         }
     }
 }

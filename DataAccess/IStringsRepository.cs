@@ -1,5 +1,4 @@
-﻿
-namespace _03_CookiesCookbook_Practise
+﻿namespace _03_CookiesCookbook_Practise.DataAccess
 {
     public interface IStringsRepository
     {
