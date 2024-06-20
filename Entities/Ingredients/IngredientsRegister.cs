@@ -1,7 +1,4 @@
-﻿
-using System.ComponentModel.Design;
-
-namespace CookieCookbook.Recipes.Ingredients;
+﻿namespace _03_CookiesCookbook_Practise.Entities.Ingredients;
 
 /*
  * This class create a sample on Ingredients

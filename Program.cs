@@ -1,31 +1,28 @@
-﻿using _03_CookiesCookbook_Practise.DataAccess;
+﻿using _03_CookiesCookbook_Practise.App;
+using _03_CookiesCookbook_Practise.DataAccess;
+using _03_CookiesCookbook_Practise.Entities.Ingredients;
 using _03_CookiesCookbook_Practise.FileAccess;
 using _03_CookiesCookbook_Practise.Repositories.RecipeRepository;
-using CookieCookbook;
-using CookieCookbook.Recipes.Ingredients;
 
 namespace _03_CookiesCookbook_Practise
 {
-
-
-
-    partial class Program
+    internal partial class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            // Register the temporary ingredients
+            IIngredientsRegister ingredientsRegister = new IngredientsRegister();
 
             // This is the format that user want
-            const FileFormat Format = FileFormat.Json;
+            const FileFormat Format = FileFormat.Text;
             FileMetaData fileMetaData = new FileMetaData("recipes", Format);
 
             IStringsRepository stringsRepository = Format == FileFormat.Json ?
                 new StringsJsonRepository() :
                 new StringsTextualRepository();
 
-            IIngredientsRegister ingredientsRegister = new IngredientsRegister();
-
             // Since we are using both
-            CookieCookbook cookieCookbookApp = new CookieCookbook(
+            var cookieCookbookApp = new CookieCookbook(
                 new RecipesRepository(
                     stringsRepository,
                     ingredientsRegister
@@ -36,7 +33,4 @@ namespace _03_CookiesCookbook_Practise
             cookieCookbookApp.Run(fileMetaData.ToPath());
         }
     }
-
 }
-
-

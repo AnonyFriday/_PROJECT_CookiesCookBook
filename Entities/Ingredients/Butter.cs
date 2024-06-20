@@ -1,4 +1,4 @@
-﻿namespace CookieCookbook.Recipes.Ingredients;
+﻿namespace _03_CookiesCookbook_Practise.Entities.Ingredients;
 
 public class Butter : Ingredient
 {
